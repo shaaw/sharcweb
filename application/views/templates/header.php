@@ -15,21 +15,39 @@
 
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="#">
+					<a class="navbar-brand" href="<?php echo base_url(); ?>">
 						Aethere
 					</a>
 				</div>
 
-				<form class="navbar-form navbar-right" role="search">
+				<?php
+
+				if(empty($logeado))
+				{
+				$attributes = array('class' => 'navbar-form navbar-right');
+				 echo form_open(base_url().'main/login',$attributes); ?>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Login">
+						<input type="login" name="login" class="form-control" placeholder="Login">
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Password">
+						<input type="password" name="password" class="form-control" placeholder="Password">
 					</div>
 					<button type="submit" class="btn btn-success">Log In</button>
-					<a type="button" class="btn btn-warning">Sing in</a>
+					<a href="<?php echo base_url(); ?>main/singin" type="button" class="btn btn-warning">Sing in</a>
 				</form>
+
+				<?php
+				}else{
+					
+					
+
+					if($logeado['permisos'] == 2)
+					{
+						echo '<a href="" class="navbar-btn btn btn-warning">Admin</a>';
+					}
+					echo '<div class="navbar-collapse navbar-right">';
+					echo '<p class="navbar-text">Bienvenido   ' . $logeado['login'] . '</p></div>' ;
+					} ?>
 
 			</div>
 		</nav>
