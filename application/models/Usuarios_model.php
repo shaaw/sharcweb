@@ -39,6 +39,13 @@ class Usuarios_model extends CI_Model {
 
 		return $query->row_array();
 	}
+
+		public function findById($id)
+	{
+		$query = $this->db->get_where('usuarios', array('id' => $id));
+
+		return $query->row_array();
+	}
 }
 
 

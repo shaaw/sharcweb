@@ -1,3 +1,19 @@
 #barra{
 	height: 15px;
 }
+
+.margin{
+	margin-top: 5px;
+}
+
+.vcenter {
+  position: absolute;
+  top: 50%;
+  transform: translateY(50%);
+}
+
+
+.categoria{
+
+	border-left: 5px solid #04BA22;
+}
