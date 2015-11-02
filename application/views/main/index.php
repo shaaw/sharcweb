@@ -26,7 +26,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-						<pre class="categoria"><?php echo substr($news_item['texto'],0,450) ?></pre>
+						<pre style="border-left: 5px solid #<?php echo $news_item['cat']['color'] ?>";"><?php echo substr($news_item['texto'],0,450) ?></pre>
 					</div>
 				</div>
 			</div>

@@ -19,18 +19,11 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<pre><?php echo $news['texto'] ?></pre>
+							<pre style="border-left: 5px solid #<?php echo $news['cat']['color'] ?>"><?php echo $news['texto'] ?></pre>
 						</div>
 					</div>
 				</div>
 			</div>
-
-
-
-
-
-
-
 
 
 		</div>

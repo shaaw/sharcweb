@@ -25,11 +25,12 @@ class Main extends MY_General {
         $this->data['news'] = $this->noticias_model->get_news($page);
 
 
+ 
         for ($i = 0; $i < count($this->data['news']); $i++) {
 
             $this->data['news'][$i]['autor'] = $this->usuarios_model->findById($this->data['news'][$i]['autor']);
+            $this->data['news'][$i]['cat'] = $this->categorias_model->search($this->data['news'][$i]['cat']);
         }
-
         $this->load->library('pagination');
 
 
@@ -80,7 +81,11 @@ class Main extends MY_General {
 
             $this->data['title'] = $this->data['news']['titulo'];
 
+
+
             $this->data['news']['autor'] = $this->usuarios_model->findById($this->data['news']['autor']);
+             $this->data['news']['cat'] = $this->categorias_model->search($this->data['news']['cat']);
+             $this->data['news']['texto'] =  parse_bbcode($this->data['news']['texto']);
 
             $this->load->view('templates/header2',  $this->data);
             $this->load->view('main/news',$this->data);
@@ -149,7 +154,7 @@ class Main extends MY_General {
         $this->usuarios_model->create();
 
         $this->load->view('templates/header', $this->data);
-        $this->load->view('Main/successSingin',$this->data);
+        $this->load->view('m    ain/successSingin',$this->data);
         $this->load->view('templates/footer', $this->data);
     }
 

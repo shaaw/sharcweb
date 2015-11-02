@@ -9,6 +9,9 @@
     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.min.js" ></script>
     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/bootstrap.js" ></script>
     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/mio.js" ></script>
+    <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jscolor.js" ></script>
+<script src="http://cdn.wysibb.com/js/jquery.wysibb.min.js"></script>
+<link rel="stylesheet" href="http://cdn.wysibb.com/css/default/wbbtheme.css" />
     <title><?php echo $title; ?></title>
 </head>
 <body>
