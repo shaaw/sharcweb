@@ -30,6 +30,7 @@ class Main extends MY_General {
 
             $this->data['news'][$i]['autor'] = $this->usuarios_model->findById($this->data['news'][$i]['autor']);
             $this->data['news'][$i]['cat'] = $this->categorias_model->search($this->data['news'][$i]['cat']);
+            $this->data['news'][$i]['texto'] = substr(parse_bbcode($this->data['news'][$i]['texto']),0,450);
         }
         $this->load->library('pagination');
 
@@ -154,7 +155,7 @@ class Main extends MY_General {
         $this->usuarios_model->create();
 
         $this->load->view('templates/header', $this->data);
-        $this->load->view('m    ain/successSingin',$this->data);
+        $this->load->view('main/successSingin',$this->data);
         $this->load->view('templates/footer', $this->data);
     }
 

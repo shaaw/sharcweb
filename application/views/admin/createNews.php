@@ -24,6 +24,10 @@ $(function() {
       <input type="text" class="form-control" name="title" placeholder="Title" required>
     </div>
     <div class="form-group">
+      <label for="Image">Image</label>
+      <input type="text" class="form-control" name="imagen" placeholder="Image" >
+    </div>
+    <div class="form-group">
       <label for="text">Text</label>
       <textarea id="editor" type="text" class="form-control" name="text" placeholder="Text" novalidate> </textarea>
     </div>

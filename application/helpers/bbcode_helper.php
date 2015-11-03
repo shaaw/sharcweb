@@ -47,7 +47,7 @@ $replace = array(
   '<em>\\1</em>',
   '<u>\\1</u>',
   '<s>\\1</s>',
-  '<img src="\\1" alt="" />',
+  '<img class="img-responsive" src="\\1" alt="" />',
   '<a href="\\1">\\1</a>',
   '<a href="\\1">\\2</a>',
   '<a href="\\1">\\1</a>',

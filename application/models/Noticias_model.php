@@ -14,6 +14,7 @@ class Noticias_model extends CI_Model {
 			'titulo' => $this->input->post('title'),
 			'texto' => $this->input->post('text'),
 			'autor' => $user['id'],
+			'imagen' => $this->input->post('imagen'),
 			'cat' => $this->input->post('cat')
 			);
 		return $this->db->insert('noticias', $data);

@@ -30,7 +30,7 @@
 
 				if(empty($logeado))
 				{
-					$attributes = array('class' => 'navbar-form navbar-right');
+					$attributes = array('class' => 'navbar-form navbar-right navbar-collapse');
 					echo form_open(base_url().'main/login',$attributes); ?>
 					<div class="form-group">
 						<input type="login" name="login" class="form-control" placeholder="Login">
