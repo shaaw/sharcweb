@@ -39,7 +39,11 @@ $find = array(
   "'\[url\](.*?)\[/url\]'i",
   "'\[url=(.*?)\](.*?)\[/url\]'i",
   "'\[link\](.*?)\[/link\]'i",
-  "'\[link=(.*?)\](.*?)\[/link\]'i"
+  "'\[link=(.*?)\](.*?)\[/link\]'i",
+  "'\[color=(.*?)\](.*?)\[/color\]'i",
+  "'\[font=(.*?)\](.*?)\[/font\]'i"
+
+
   );
 
 $replace = array(
@@ -51,7 +55,9 @@ $replace = array(
   '<a href="\\1">\\1</a>',
   '<a href="\\1">\\2</a>',
   '<a href="\\1">\\1</a>',
-  '<a href="\\1">\\2</a>'
+  '<a href="\\1">\\2</a>',
+  '<font color="\\1">\\2</font>',
+  '<font face="\\1">\\2</font>'
   );
 
 return preg_replace($find, $replace, $str);

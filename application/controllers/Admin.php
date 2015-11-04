@@ -29,8 +29,8 @@ class Admin extends MY_General {
 
         $this->data['news'] = $this->noticias_model->get_news();
 
-       
- 
+
+
         for ($i = 0; $i < count($this->data['news']); $i++) {
 
             $this->data['news'][$i]['autor'] = $this->usuarios_model->findById($this->data['news'][$i]['autor']);
@@ -116,7 +116,7 @@ function create()
 
 
     $this->data['cats'] = $this->categorias_model->get_categories();
- 
+
     $this->data['title'] = 'Crete News';
 
 
@@ -136,6 +136,54 @@ function create()
       $this->index();
 
   }
+
+
+}
+
+
+function edit()
+{
+
+ $get = $this->uri->uri_to_assoc();
+
+
+ if(!empty($get['id']))
+ {
+
+
+    $this->load->helper(array('form', 'url'));
+
+    $this->load->library('form_validation');
+
+    $this->form_validation->set_rules('title', 'Title', 'required');
+    $this->form_validation->set_rules('text', 'Body of the post', 'required');
+
+
+    $this->data['cats'] = $this->categorias_model->get_categories();
+
+    $this->data['new'] = $this->noticias_model->search($get['id']);
+
+
+    $this->data['title'] = 'Edit New';
+
+
+    if ($this->form_validation->run() == FALSE)
+    {
+
+        $this->load->view('templates/header2', $this->data);
+        $this->load->view('admin/editNews', $this->data);
+        $this->load->view('templates/footer', $this->data);
+    }
+    else
+    {
+
+      $this->noticias_model->create($this->data['logeado']);
+
+
+      $this->index();
+
+  }
+}
 
 
 }
