@@ -85,8 +85,8 @@ class Main extends MY_General {
 
 
             $this->data['news']['autor'] = $this->usuarios_model->findById($this->data['news']['autor']);
-             $this->data['news']['cat'] = $this->categorias_model->search($this->data['news']['cat']);
-             $this->data['news']['texto'] =  parse_bbcode($this->data['news']['texto']);
+            $this->data['news']['cat'] = $this->categorias_model->search($this->data['news']['cat']);
+            $this->data['news']['texto'] =  parse_bbcode($this->data['news']['texto']);
 
             $this->load->view('templates/header2',  $this->data);
             $this->load->view('main/news',$this->data);
