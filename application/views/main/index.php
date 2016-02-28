@@ -40,7 +40,7 @@
 
 								<div class="media-left media-middle">
 									<a href="<?php echo base_url() ?>main/news/id/<?php  echo $news_item['id']?>">
-										<img class="media-object" style="max-width: 128px" src="<?php echo $news_item['imagen'] ?>" alt="..." />
+										<img class="media-object" style="max-width: 200px" src="<?php echo $news_item['imagen'] ?>" alt="..." />
 									</a>
 								</div>
 								<div class="media-body">

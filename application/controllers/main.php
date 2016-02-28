@@ -25,7 +25,7 @@ class Main extends MY_General {
         $this->data['news'] = $this->noticias_model->get_news($page);
 
 
- 
+
         for ($i = 0; $i < count($this->data['news']); $i++) {
 
             $this->data['news'][$i]['autor'] = $this->usuarios_model->findById($this->data['news'][$i]['autor']);
@@ -60,6 +60,9 @@ class Main extends MY_General {
 
         $this->data['pagination'] = $this->pagination->create_links();
 
+
+        $this->data['carrousel'] = $this->noticias_model->getNoticiasCarrousel();
+
         $this->data['title'] = 'News';
 
         $this->load->view('templates/header',  $this->data);
@@ -85,8 +88,8 @@ class Main extends MY_General {
 
 
             $this->data['news']['autor'] = $this->usuarios_model->findById($this->data['news']['autor']);
-             $this->data['news']['cat'] = $this->categorias_model->search($this->data['news']['cat']);
-             $this->data['news']['texto'] =  parse_bbcode($this->data['news']['texto']);
+            $this->data['news']['cat'] = $this->categorias_model->search($this->data['news']['cat']);
+            $this->data['news']['texto'] =  parse_bbcode($this->data['news']['texto']);
 
             $this->load->view('templates/header2',  $this->data);
             $this->load->view('main/news',$this->data);
@@ -113,20 +116,28 @@ class Main extends MY_General {
                 $this->session->set_userdata('login', $user);
                 $this->session->set_userdata('id_login', $resultado['id']);
                 $this->data['logeado'] = $resultado;
+                $this->index();
             }else
             {
                 $this->data['loginError'] = "User or password incorrect";
+                $this->data['title'] = 'Login';
+
+                $this->load->view('templates/header2', $this->data);
+                $this->load->view('main/login',$this->data);
+                $this->load->view('templates/footer', $this->data);
             }
         }else
         {
          $this->data['loginError'] = "User or password incorrect";
+
+         $this->data['title'] = 'Login';
+
+         $this->load->view('templates/header2', $this->data);
+         $this->load->view('main/login',$this->data);
+         $this->load->view('templates/footer', $this->data);
      }
 
-     $this->data['title'] = 'Login';
 
-     $this->load->view('templates/header2', $this->data);
-     $this->load->view('main/login',$this->data);
-     $this->load->view('templates/footer', $this->data);
  }   
 
  function singin()
@@ -161,7 +172,15 @@ class Main extends MY_General {
 
 
 
+
+
 }
 
+function logout()
+{
+   $this->session->unset_userdata('login');
+   unset( $this->data['logeado']);
+   $this->index();
+}
 }
 ?>

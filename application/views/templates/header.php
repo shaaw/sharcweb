@@ -6,12 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/main.css" />
+
+    <?php
+
+         if(!empty($logeado) && $logeado['login'] == 'arcaisa')
+                {
+
+        echo '<link rel="stylesheet" type="text/css" href="' .base_url().'assets/css/cumple.css" />';
+    }
+                     ?>
+    
     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jquery.min.js" ></script>
     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/bootstrap.js" ></script>
     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/mio.js" ></script>
     <script type="text/javascript" src="<?php echo base_url() ?>assets/js/jscolor.js" ></script>
-<script src="http://cdn.wysibb.com/js/jquery.wysibb.min.js"></script>
-<link rel="stylesheet" href="http://cdn.wysibb.com/css/default/wbbtheme.css" />
+    <script src="http://cdn.wysibb.com/js/jquery.wysibb.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.wysibb.com/css/default/wbbtheme.css" />
     <title><?php echo $title; ?></title>
 </head>
 <body>
@@ -33,10 +43,10 @@
                     $attributes = array('class' => 'navbar-form navbar-right navbar-collapse');
                     echo form_open(base_url().'main/login',$attributes); ?>
                     <div class="form-group">
-                        <input type="login" name="login" class="form-control" placeholder="Login">
+                        <input type="login" size="15" name="login" class="form-control" placeholder="Login">
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <input type="password" size="15" name="password" class="form-control" placeholder="Password">
                     </div>
                     <button type="submit" class="btn btn-success">Log In</button>
                     <a href="<?php echo base_url(); ?>main/singin" type="button" class="btn btn-warning">Sing in</a>
@@ -51,59 +61,97 @@
                 {
                     echo '<a href="'. base_url().'admin/" class="navbar-btn btn btn-warning">Admin</a>';
                 }
+                if($logeado['login'] == 'arcaisa')
+                {
+                       echo '<a id="cumple" href="'. base_url().'admin/cumpleanos" class="navbar-btn btn btn-warning">ENTRA!!</a>';
+                }
+
                 echo '<div class="navbar-collapse navbar-right">';
-                echo '<p class="navbar-text">Bienvenido   ' . $logeado['login'] . '</p></div>' ;
+                echo '<p class="navbar-text">Bienvenido   ' . $logeado['login'] . '</p><a href="'. base_url().'main/logout" class="navbar-btn btn btn-warning">Logout!!</a></div>' ;
             } ?>
 
         </div>
     </nav>
 
     <div class="conteiner row">
-        <div class="col-md-5">
+        <div class="col-md-6">
             Banner
         </div>
-        <div class="col-md-7">
+        <div class="col-md-6">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+
+
+                    <?php 
+
+                    for ($i = 0 ; $i < count($carrousel); $i++){
+
+
+                        $activo = '';
+                        if($i === 0)
+                        {
+                            $activo = 'class="active"';
+                        }
+
+                        echo '<li data-target="#carousel-example-generic" data-slide-to="'.$i.'" '.$activo.'></li>';
+
+                    }
+
+
+                    ?>
                 </ol>
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNzc3OiM3NzcKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTBhMDA2NDUxNSB0ZXh0IHsgZmlsbDojNzc3O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjQ1cHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1MGEwMDY0NTE1Ij48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzc3NyIvPjxnPjx0ZXh0IHg9IjMzMy4yMTA5Mzc1IiB5PSIyNzAuMSI+OTAweDUwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="...">
-                        <div class="carousel-caption">
-                            <h2>Prueba </h2>
-                            <p>prueba de pequeño</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNzc3OiM3NzcKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTBhMDA2NDUxNSB0ZXh0IHsgZmlsbDojNzc3O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjQ1cHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1MGEwMDY0NTE1Ij48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzc3NyIvPjxnPjx0ZXh0IHg9IjMzMy4yMTA5Mzc1IiB5PSIyNzAuMSI+OTAweDUwMDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="...">
-                        <div class="carousel-caption">
-                            <h2>Prueba </h2>
-                            <p>prueba de pequeño</p>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Controls -->
-                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-            
+
+
+                    <?php 
+
+                    for ($i = 0 ; $i < count($carrousel); $i++){
+
+                        $activo = '';
+                        if($i === 0)
+                        {
+                            $activo = 'active';
+                        }
+
+
+                        echo '<div class="item '.$activo.'"><a href="'.base_url().'main/news/id/'.$carrousel[$i]['id'].' "><img class="img-responsive" src="'.$carrousel[$i]['imagen'].'" alt="..." />
+                       <div class="carousel-caption"></a>
+                        <h2>'.$carrousel[$i]['titulo'].' </h2>
+                    </div>
+                </div>';
+
+            }
+
+
+            ?>
+
+
+
+
+
+
         </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
-    <ul class="nav nav-pills">
-        <li role="presentation" ><a href="<?php echo base_url(); ?>">Home</a></li>
-        <li role="presentation"><a href="#">Game guide</a></li>
-        <li role="presentation"><a href="#">Gallery</a></li>
-        <li role="presentation"><a href="#">Forum</a></li>
-    </ul>
+
+</div>
+</div>
+<ul class="nav nav-pills">
+    <li role="presentation" ><a href="<?php echo base_url(); ?>">Home</a></li>
+    <li role="presentation"><a href="#">Game guide</a></li>
+    <li role="presentation"><a href="#">Gallery</a></li>
+    <li role="presentation"><a href="#">Forum</a></li>
+</ul>

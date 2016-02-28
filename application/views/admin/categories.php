@@ -1,4 +1,4 @@
-<h2 class="prueba"><?php echo $title; ?></h2>
+	<h2 class="prueba"><?php echo $title; ?></h2>
 
 
 <ul class="nav nav-pills">

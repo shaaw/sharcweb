@@ -10,7 +10,7 @@ class Admin extends MY_General {
         {
             ;
         } 
-        else
+        else 
         {
             $this->load->view('templates/header2',  $this->data);
 
@@ -141,7 +141,7 @@ function create()
 }
 
 
-function edit()
+function editNews()
 {
 
  $get = $this->uri->uri_to_assoc();
@@ -161,7 +161,7 @@ function edit()
 
     $this->data['cats'] = $this->categorias_model->get_categories();
 
-    $this->data['new'] = $this->noticias_model->search($get['id']);
+    $this->data['news'] = $this->noticias_model->search($get['id']);
 
 
     $this->data['title'] = 'Edit New';
@@ -177,13 +177,16 @@ function edit()
     else
     {
 
-      $this->noticias_model->create($this->data['logeado']);
+      $this->noticias_model->update();
 
 
       $this->index();
 
   }
 }
+
+
+
 
 
 }
@@ -203,5 +206,19 @@ function deleteNews()
 
 }
 
+function cumpleanos()
+{
+    if(empty($this->data['logeado']) || $this->data['logeado']['login'] != 'arcaisa')
+    {
+        index();
+    }else
+    {
+        $this->data['title'] = 'Feliz Cumpleaños!!';
+        $this->load->view('templates/header2', $this->data);
+        $this->load->view('admin/cumpleanos', $this->data);
+        $this->load->view('templates/footer', $this->data);
+    }
 
+
+}
 }

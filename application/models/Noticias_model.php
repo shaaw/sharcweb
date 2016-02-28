@@ -42,6 +42,30 @@ class Noticias_model extends CI_Model {
 	{
 		$this->db->delete('noticias', array('id' => $id)); 
 	}
+
+
+	public function getNoticiasCarrousel()
+	{
+		$query = $this->db->order_by('fecha','desc')->get_where('noticias',array('carrousel' => '1'));
+		return $query->result_array();
+	}
+
+
+	public function update()
+	{
+
+		$data = array(
+			'titulo' => $this->input->post('title'),
+			'texto' => $this->input->post('text'),
+			'imagen' => $this->input->post('imagen'),
+			'cat' => $this->input->post('cat')
+			);
+
+		$this->db->where('id', $this->input->post('id'));
+
+		return $this->db->update('noticias', $data);
+
+	}
 }
 
 

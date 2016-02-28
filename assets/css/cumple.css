@@ -1,5 +1,8 @@
+
 #barra{
 	height: 15px;
+
+	background-color: #9652E3;
 }
 
 .margin{
@@ -22,3 +25,8 @@ pre{
 	white-space: pre-wrap;
 	word-break: normal;
 }
+
+#cumple{
+	background-color: purple;
+}
+
