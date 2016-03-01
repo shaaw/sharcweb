@@ -12,9 +12,11 @@ class Admin extends MY_General {
         } 
         else 
         {
-            $this->load->view('templates/header2',  $this->data);
+            $this->load->view('templates/header',  $this->data);
+            $this->load->view('templates/headerNav',  $this->data);
 
             $this->load->view('templates/privileges',$this->data);
+
             $this->load->view('templates/footer', $this->data);
             die();
         }
@@ -36,10 +38,11 @@ class Admin extends MY_General {
             $this->data['news'][$i]['autor'] = $this->usuarios_model->findById($this->data['news'][$i]['autor']);
             $this->data['news'][$i]['cat'] = $this->categorias_model->search($this->data['news'][$i]['cat']);
         }
-
-        $this->load->view('templates/header2',  $this->data);
+        $this->load->view('templates/header',  $this->data);
+        $this->load->view('templates/headerNav',  $this->data);
 
         $this->load->view('admin/index',$this->data);
+
         $this->load->view('templates/footer', $this->data);
 
     }
@@ -50,9 +53,11 @@ class Admin extends MY_General {
 
         $this->data['categories'] = $this->categorias_model->get_categories();
 
-        $this->load->view('templates/header2',  $this->data);
+        $this->load->view('templates/header',  $this->data);
+        $this->load->view('templates/headerNav',  $this->data);
 
         $this->load->view('admin/categories',$this->data);
+
         $this->load->view('templates/footer', $this->data);
     }
 
@@ -71,8 +76,11 @@ class Admin extends MY_General {
         if ($this->form_validation->run() == FALSE)
         {
 
-            $this->load->view('templates/header2', $this->data);
+            $this->load->view('templates/header',  $this->data);
+            $this->load->view('templates/headerNav',  $this->data);
+
             $this->load->view('admin/createCat', $this->data);
+
             $this->load->view('templates/footer', $this->data);
         }
         else
@@ -123,19 +131,22 @@ function create()
     if ($this->form_validation->run() == FALSE)
     {
 
-        $this->load->view('templates/header2', $this->data);
-        $this->load->view('admin/createNews', $this->data);
-        $this->load->view('templates/footer', $this->data);
-    }
-    else
-    {
+     $this->load->view('templates/header',  $this->data);
+     $this->load->view('templates/headerNav',  $this->data);
 
-      $this->noticias_model->create($this->data['logeado']);
+     $this->load->view('admin/createNews', $this->data);
+     
+     $this->load->view('templates/footer', $this->data);
+ }
+ else
+ {
+
+  $this->noticias_model->create($this->data['logeado']);
 
 
-      $this->index();
+  $this->index();
 
-  }
+}
 
 
 }
@@ -144,11 +155,11 @@ function create()
 function editNews()
 {
 
- $get = $this->uri->uri_to_assoc();
+   $get = $this->uri->uri_to_assoc();
 
 
- if(!empty($get['id']))
- {
+   if(!empty($get['id']))
+   {
 
 
     $this->load->helper(array('form', 'url'));
@@ -170,7 +181,8 @@ function editNews()
     if ($this->form_validation->run() == FALSE)
     {
 
-        $this->load->view('templates/header2', $this->data);
+        $this->load->view('templates/header',  $this->data);
+        $this->load->view('templates/headerNav',  $this->data);
         $this->load->view('admin/editNews', $this->data);
         $this->load->view('templates/footer', $this->data);
     }
@@ -214,7 +226,8 @@ function cumpleanos()
     }else
     {
         $this->data['title'] = 'Feliz Cumpleaños!!';
-        $this->load->view('templates/header2', $this->data);
+        $this->load->view('templates/header',  $this->data);
+        $this->load->view('templates/headerNav',  $this->data);
         $this->load->view('admin/cumpleanos', $this->data);
         $this->load->view('templates/footer', $this->data);
     }

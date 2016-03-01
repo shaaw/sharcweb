@@ -65,8 +65,13 @@ class Main extends MY_General {
 
         $this->data['title'] = 'News';
 
+        
         $this->load->view('templates/header',  $this->data);
+        $this->load->view('templates/headerCarru',$this->data);
+        $this->load->view('templates/headerNav',  $this->data);
+
         $this->load->view('main/index',$this->data);
+
         $this->load->view('templates/footer', $this->data);
 
     }
@@ -91,8 +96,12 @@ class Main extends MY_General {
             $this->data['news']['cat'] = $this->categorias_model->search($this->data['news']['cat']);
             $this->data['news']['texto'] =  parse_bbcode($this->data['news']['texto']);
 
-            $this->load->view('templates/header2',  $this->data);
+            
+            $this->load->view('templates/header',  $this->data);
+            $this->load->view('templates/headerNav',  $this->data);
+
             $this->load->view('main/news',$this->data);
+
             $this->load->view('templates/footer', $this->data);
 
         }
@@ -122,8 +131,12 @@ class Main extends MY_General {
                 $this->data['loginError'] = "User or password incorrect";
                 $this->data['title'] = 'Login';
 
-                $this->load->view('templates/header2', $this->data);
+                
+                $this->load->view('templates/header',  $this->data);
+                $this->load->view('templates/headerNav',  $this->data);
+
                 $this->load->view('main/login',$this->data);
+
                 $this->load->view('templates/footer', $this->data);
             }
         }else
@@ -132,8 +145,12 @@ class Main extends MY_General {
 
          $this->data['title'] = 'Login';
 
-         $this->load->view('templates/header2', $this->data);
+
+         $this->load->view('templates/header',  $this->data);
+         $this->load->view('templates/headerNav',  $this->data);
+
          $this->load->view('main/login',$this->data);
+
          $this->load->view('templates/footer', $this->data);
      }
 
@@ -155,24 +172,28 @@ class Main extends MY_General {
 
     if ($this->form_validation->run() == FALSE)
     {
-        $this->load->view('templates/header2', $this->data);
-        $this->load->view('main/singin', $this->data);
-        $this->load->view('templates/footer', $this->data);
-    }
-    else
-    {
+
+       $this->load->view('templates/header',  $this->data);
+       $this->load->view('templates/headerNav',  $this->data);
+
+       $this->load->view('main/singin', $this->data);
+
+       $this->load->view('templates/footer', $this->data);
+   }
+   else
+   {
 
 
-        $this->usuarios_model->create();
-
-        $this->load->view('templates/header', $this->data);
-        $this->load->view('main/successSingin',$this->data);
-        $this->load->view('templates/footer', $this->data);
-    }
+    $this->usuarios_model->create();
 
 
+    $this->load->view('templates/header',  $this->data);
+    $this->load->view('templates/headerNav',  $this->data);
 
+    $this->load->view('main/successSingin',$this->data);
 
+    $this->load->view('templates/footer', $this->data);
+}
 
 }
 
@@ -182,5 +203,6 @@ function logout()
    unset( $this->data['logeado']);
    $this->index();
 }
+
 }
 ?>
