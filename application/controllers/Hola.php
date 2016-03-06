@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Hola extends CI_Controller {
+class Hola extends MY_General {
 
 	/**
 	 * Index Page for this controller.
