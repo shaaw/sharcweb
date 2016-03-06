@@ -9,7 +9,7 @@ class Main extends MY_General {
 
     }
 
-    function index()
+    public function index()
     {
 
         $get = $this->uri->uri_to_assoc();
@@ -77,7 +77,7 @@ class Main extends MY_General {
     }
 
 
-    function news()
+    public function news()
     {
         $get = $this->uri->uri_to_assoc();
 

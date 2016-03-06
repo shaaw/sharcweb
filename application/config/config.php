@@ -26,7 +26,7 @@ if($_SERVER['HTTP_HOST'] == 'localhost')
 $config['base_url']    = 'http://localhost';
 }else
 {
-	$config['base_url']    = 'http://www.kosmoteam.xyz/';
+	$config['base_url']    = 'http://kosmoteam.xyz/';
 }
 
 /*
