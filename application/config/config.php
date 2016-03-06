@@ -17,7 +17,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url']    = 'http://wwww.'.$_SERVER['HTTP_HOST'].'/';
+
+
+if($_SERVER['HTTP_HOST'] == 'localhost')
+{
+
+
+$config['base_url']    = 'http://localhost';
+}else
+{
+	$config['base_url']    = 'http://www.kosmoteam.xyz/';
+}
 
 /*
 |--------------------------------------------------------------------------
