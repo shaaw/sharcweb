@@ -13,9 +13,6 @@ class Main extends MY_General {
 
     public function index()
     {
-        $this->load->view('welcome_message');
-
-/*
         $get = $this->uri->uri_to_assoc();
 
         if(empty($get['page']))
@@ -77,7 +74,7 @@ class Main extends MY_General {
         $this->load->view('main/index',$this->data);
 
         $this->load->view('templates/footer', $this->data);
-        */
+        
 
     }
 
