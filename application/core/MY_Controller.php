@@ -1,7 +1,7 @@
 <?php
 class MY_General extends CI_Controller {
 
-   public $data;
+    public $data;
 
     public function __construct()
     {

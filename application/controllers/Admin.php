@@ -1,4 +1,6 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 class Admin extends MY_General {
 
 
@@ -23,7 +25,7 @@ class Admin extends MY_General {
 
     }
 
-    function index()
+    public function index()
     {
 
 
