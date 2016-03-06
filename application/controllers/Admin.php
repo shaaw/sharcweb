@@ -1,5 +1,5 @@
 <?php
-class Admin extends MY_General {
+class admin extends MY_General {
 
 
     public function __construct()

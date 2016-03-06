@@ -1,5 +1,5 @@
 <?php
-class Main extends MY_General {
+class main extends MY_General {
 
 
     public function __construct()
