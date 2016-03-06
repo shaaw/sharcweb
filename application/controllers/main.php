@@ -13,7 +13,9 @@ class Main extends MY_General {
 
     public function index()
     {
+        $this->load->view('welcome_message');
 
+/*
         $get = $this->uri->uri_to_assoc();
 
         if(empty($get['page']))
@@ -75,6 +77,7 @@ class Main extends MY_General {
         $this->load->view('main/index',$this->data);
 
         $this->load->view('templates/footer', $this->data);
+        */
 
     }
 
@@ -110,7 +113,7 @@ class Main extends MY_General {
     }
 
 
-    function login()
+    public function login()
     {
 
         $user = $this->input->post('login');
@@ -159,7 +162,7 @@ class Main extends MY_General {
 
  }   
 
- function singin()
+ public function singin()
  {
 
     $this->load->helper(array('form', 'url'));
@@ -199,7 +202,7 @@ class Main extends MY_General {
 
 }
 
-function logout()
+public function logout()
 {
    $this->session->unset_userdata('login');
    unset( $this->data['logeado']);
