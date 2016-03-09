@@ -236,4 +236,29 @@ function cumpleanos()
 
 
 }
+
+    function carrusel()
+    {
+
+
+        $this->data['title'] = 'Control panel  <small> News </small>';
+
+        $this->data['news'] = $this->noticias_model->get_news();
+
+
+
+        for ($i = 0; $i < count($this->data['news']); $i++) {
+
+            $this->data['news'][$i]['autor'] = $this->usuarios_model->findById($this->data['news'][$i]['autor']);
+            $this->data['news'][$i]['cat'] = $this->categorias_model->search($this->data['news'][$i]['cat']);
+        }
+        $this->load->view('templates/header',  $this->data);
+        $this->load->view('templates/headerNav',  $this->data);
+
+        $this->load->view('admin/carrusel',$this->data);
+
+        $this->load->view('templates/footer', $this->data);
+
+
+    }
 }
