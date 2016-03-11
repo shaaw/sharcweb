@@ -261,4 +261,16 @@ function cumpleanos()
 
 
     }
+
+    function removeCarrousel()
+    {
+        $get = $this->uri->uri_to_assoc();
+
+        if(!empty($get['id']))
+        {
+            
+        }
+
+        $this->carrusel();
+    }
 }

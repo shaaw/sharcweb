@@ -66,6 +66,26 @@ class Noticias_model extends CI_Model {
 		return $this->db->update('noticias', $data);
 
 	}
+
+	public function setCarrousel($id)
+	{
+		$query = $this->db->get_where('noticias', array('id' => $id));
+
+		$resultado = $query->row_array();
+		$resultado['carrousel'] = '1';
+
+		$this->db->update('noticias',$resultado);
+	}
+
+	public function removeCarrousel($id)
+	{
+		$query = $this->db->get_where('noticias', array('id' => $id));
+
+		$resultado = $query->row_array();
+		$resultado['carrousel'] = '0';
+
+		$this->db->update('noticias',$resultado);
+	}
 }
 
 
