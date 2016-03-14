@@ -28,38 +28,39 @@
 
 	<?php foreach ($news as $news_item) {
 		# code...
-	?>
-	<div class="row margin">
-		<div class="col-md-2"><a class="vcenter"><?php echo $news_item['titulo'] ?></a></div>
-		<div class="col-md-2"><p class="vcenter"><?php echo $news_item['autor']['login'] ?></p></div>
-		<div class="col-md-2"><p class="vcenter"><?php echo $news_item['fecha'] ?></p></div>
-		<div class="col-md-2"><p class="vcenter"  style="color:#<?php echo $news_item['cat']['color'] ?>"><?php echo $news_item['cat']['nombre'] ?></p></div>
-
-		<?php
-
-
-		if($news_item['carrousel'] == '1')
-		{
-			?>
-				<div class="col-md-2"><a type="button" href="<?php echo base_url().'admin/removeCarrousel/id/'.$news_item['id'] ?>" class="btn btn-success" aria-label="Left Align"><span class="glyphicon glyphicon-minus"   aria-hidden="true"></span></a></div>
-
-
-			<?php  
-		}else
-		{
-
-			?>
-				<div class="col-md-2"><a type="button" href="<?php echo base_url().'admin/setCarrousel/id/'.$news_item['id'] ?>" class="btn btn-danger" aria-label="Left Align"><span class="glyphicon glyphicon-plus"   aria-hidden="true"></span></a></div>
-
+		?>
+		<div class="row margin">
+			<div class="col-md-2"><a class="vcenter"><?php echo $news_item['titulo'] ?></a></div>
+			<div class="col-md-2"><p class="vcenter"><?php echo $news_item['autor']['login'] ?></p></div>
+			<div class="col-md-2"><p class="vcenter"><?php echo $news_item['fecha'] ?></p></div>
+			<div class="col-md-2"><p class="vcenter"  style="color:#<?php echo $news_item['cat']['color'] ?>"><?php echo $news_item['cat']['nombre'] ?></p></div>
 
 			<?php
 
-		}
+			if($news_item['image'] != "")
+			{
+				if($news_item['carrousel'] == '1')
+				{
+					?>
+					<div class="col-md-2"><a type="button" href="<?php echo base_url().'admin/removeCarrousel/id/'.$news_item['id'] ?>" class="btn btn-success" aria-label="Left Align"><span class="glyphicon glyphicon-minus"   aria-hidden="true"></span></a></div>
 
-		?>
 
-	</div>
-	<?php
+					<?php  
+				}else
+				{
+
+					?>
+					<div class="col-md-2"><a type="button" href="<?php echo base_url().'admin/setCarrousel/id/'.$news_item['id'] ?>" class="btn btn-danger" aria-label="Left Align"><span class="glyphicon glyphicon-plus"   aria-hidden="true"></span></a></div>
+
+
+					<?php
+
+				}
+			}
+			?>
+
+		</div>
+		<?php
 	}
 	?>
 	

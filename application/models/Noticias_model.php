@@ -33,7 +33,7 @@ class Noticias_model extends CI_Model {
 		$this->db->limit( 15,($page-1)*15);
 
 		$query = $this->db->order_by('fecha','desc')->get('noticias');
-        return $query->result_array();
+		return $query->result_array();
 	}
 
 
@@ -71,10 +71,15 @@ class Noticias_model extends CI_Model {
 	{
 		$query = $this->db->get_where('noticias', array('id' => $id));
 
+
 		$resultado = $query->row_array();
+
 		$resultado['carrousel'] = '1';
 
-		$this->db->update('noticias',$resultado);
+		if($resultado['imagen'] != "")
+		{
+			$this->db->update('noticias',$resultado);
+		}
 	}
 
 	public function removeCarrousel($id)
@@ -82,9 +87,13 @@ class Noticias_model extends CI_Model {
 		$query = $this->db->get_where('noticias', array('id' => $id));
 
 		$resultado = $query->row_array();
+		
 		$resultado['carrousel'] = '0';
 
-		$this->db->update('noticias',$resultado);
+		if($resultado['imagen'] != "")
+		{
+			$this->db->update('noticias',$resultado);
+		}
 	}
 }
 

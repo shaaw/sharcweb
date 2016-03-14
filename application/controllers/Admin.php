@@ -133,35 +133,33 @@ function create()
     if ($this->form_validation->run() == FALSE)
     {
 
-     $this->load->view('templates/header',  $this->data);
-     $this->load->view('templates/headerNav',  $this->data);
+       $this->load->view('templates/header',  $this->data);
+       $this->load->view('templates/headerNav',  $this->data);
 
-     $this->load->view('admin/createNews', $this->data);
-     
-     $this->load->view('templates/footer', $this->data);
- }
- else
- {
+       $this->load->view('admin/createNews', $this->data);
 
-  $this->noticias_model->create($this->data['logeado']);
+       $this->load->view('templates/footer', $this->data);
+   }
+   else
+   {
 
-
-  $this->index();
-
-}
+      $this->noticias_model->create($this->data['logeado']);
 
 
+      $this->index();
+
+    }
 }
 
 
 function editNews()
 {
 
-   $get = $this->uri->uri_to_assoc();
+ $get = $this->uri->uri_to_assoc();
 
 
-   if(!empty($get['id']))
-   {
+ if(!empty($get['id']))
+ {
 
 
     $this->load->helper(array('form', 'url'));
@@ -199,10 +197,6 @@ function editNews()
   }
 }
 
-
-
-
-
 }
 
 
@@ -237,40 +231,54 @@ function cumpleanos()
 
 }
 
-    function carrusel()
+function carrusel()
+{
+
+
+    $this->data['title'] = 'Control panel  <small> Carrusel </small>';
+
+    $this->data['news'] = $this->noticias_model->get_news();
+
+
+
+    for ($i = 0; $i < count($this->data['news']); $i++)
     {
 
-
-        $this->data['title'] = 'Control panel  <small> News </small>';
-
-        $this->data['news'] = $this->noticias_model->get_news();
-
-
-
-        for ($i = 0; $i < count($this->data['news']); $i++) {
-
-            $this->data['news'][$i]['autor'] = $this->usuarios_model->findById($this->data['news'][$i]['autor']);
-            $this->data['news'][$i]['cat'] = $this->categorias_model->search($this->data['news'][$i]['cat']);
-        }
-        $this->load->view('templates/header',  $this->data);
-        $this->load->view('templates/headerNav',  $this->data);
-
-        $this->load->view('admin/carrusel',$this->data);
-
-        $this->load->view('templates/footer', $this->data);
-
-
+        $this->data['news'][$i]['autor'] = $this->usuarios_model->findById($this->data['news'][$i]['autor']);
+        $this->data['news'][$i]['cat'] = $this->categorias_model->search($this->data['news'][$i]['cat']);
     }
 
-    function removeCarrousel()
+    $this->load->view('templates/header',  $this->data);
+    $this->load->view('templates/headerNav',  $this->data);
+
+    $this->load->view('admin/carrusel',$this->data);
+
+    $this->load->view('templates/footer', $this->data);
+
+
+}
+
+function removeCarrousel()
+{
+    $get = $this->uri->uri_to_assoc();
+
+    if(!empty($get['id']))
     {
-        $get = $this->uri->uri_to_assoc();
-
-        if(!empty($get['id']))
-        {
-            
-        }
-
-        $this->carrusel();
+        $this->noticias_model->removeCarrousel($get['id']);
     }
+
+    $this->carrusel();
+}
+
+function setCarrousel()
+{
+    $get = $this->uri->uri_to_assoc();
+
+    if(!empty($get['id']))
+    {
+        $this->noticias_model->setCarrousel($get['id']);
+    }
+
+    $this->carrusel();
+}
 }
