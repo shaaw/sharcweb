@@ -78,6 +78,8 @@ class Noticias_model extends CI_Model {
 
 		if($resultado['imagen'] != "")
 		{
+			$this->db->where('id', $resultado['id']);
+			unset($resultado['id']);
 			$this->db->update('noticias',$resultado);
 		}
 	}
@@ -92,6 +94,8 @@ class Noticias_model extends CI_Model {
 
 		if($resultado['imagen'] != "")
 		{
+			$this->db->where('id', $resultado['id']);
+			unset($resultado['id']);
 			$this->db->update('noticias',$resultado);
 		}
 	}
