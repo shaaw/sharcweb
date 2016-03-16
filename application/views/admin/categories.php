@@ -27,7 +27,7 @@
 
 	<?php foreach ($categories as $cat) {
 	?>
-	<div class="row margin">
+	<div class="row margin oscurecer">
 		<div class="col-md-2"><a class="vcenter"><?php echo $cat['nombre'] ?></a></div>
 		<div class="col-md-2"><p style="background-color:#<?php echo $cat['color'] ?> ;color:#ffffff" class="vcenter"><?php echo $cat['color'] ?></p></div>
 		<div class="col-md-2"></div>

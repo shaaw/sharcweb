@@ -29,7 +29,7 @@
 	<?php foreach ($news as $news_item) {
 		# code...
 	?>
-	<div class="row margin">
+	<div class="row margin oscurecer">
 		<div class="col-md-2"><a class="vcenter"><?php echo $news_item['titulo'] ?></a></div>
 		<div class="col-md-2"><p class="vcenter"><?php echo $news_item['autor']['login'] ?></p></div>
 		<div class="col-md-2"><p class="vcenter"><?php echo $news_item['fecha'] ?></p></div>

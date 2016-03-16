@@ -30,7 +30,7 @@
 	{
 		# code...
 		?>
-		<div class="row margin">
+		<div class="row margin oscurecer">
 			<div class="col-md-2"><a ><?php echo $news_item['titulo'] ?></a></div>
 			<div class="col-md-2"><p ><?php echo $news_item['autor']['login'] ?></p></div>
 			<div class="col-md-2"><p ><?php echo $news_item['fecha'] ?></p></div>
@@ -43,7 +43,7 @@
 				if($news_item['carrousel'] == '1')
 				{
 					?>
-					<div id="GtR" class="col-md-2"><a id="GtR1" type="button" href="<?php echo base_url().'admin/removeCarrousel/id/'.$news_item['id'] ?>" class="btn btn-success" aria-label="Left Align"><span id="GtR2" class="glyphicon glyphicon-minus"   aria-hidden="true"></span></a></div>
+					<div id="GtR" class="col-md-2"><a id="GtR1" type="button" href="<?php echo base_url().'admin/removeCarrousel/id/'.$news_item['id'] ?>" class="btn btn-success" aria-label="Left Align"><span id="GtR2" class="glyphicon glyphicon-plus"   aria-hidden="true"></span></a></div>
 
 
 					<?php  
@@ -51,7 +51,7 @@
 				{
 
 					?>
-					<div id="RtG"  class="col-md-2"><a id="RtG1" type="button" href="<?php echo base_url().'admin/setCarrousel/id/'.$news_item['id'] ?>" class="btn btn-danger" aria-label="Left Align"><span id="RtG2" class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></div>
+					<div id="RtG"  class="col-md-2"><a id="RtG1" type="button" href="<?php echo base_url().'admin/setCarrousel/id/'.$news_item['id'] ?>" class="btn btn-danger" aria-label="Left Align"><span id="RtG2" class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></div>
 
 
 					<?php
@@ -72,25 +72,25 @@
 			$("#GtR1").mouseover(function()
 			{
 				$("#GtR1").addClass("btn-danger").removeClass("btn-success");
-				$("#GtR2").addClass("glyphicon-plus").removeClass("glyphicon-minus");
+				$("#GtR2").addClass("glyphicon-minus").removeClass("glyphicon-plus");
 			})
 
 			$("#RtG1").mouseover(function()
 			{
 				$("#RtG1").addClass("btn-success").removeClass("btn-danger");
-				$("#RtG2").addClass("glyphicon-minus").removeClass("glyphicon-plus");
+				$("#RtG2").addClass("glyphicon-plus").removeClass("glyphicon-minus");
 			})
 
 			$("#RtG1").mouseout(function()
 			{
 				$("#RtG1").addClass("btn-danger").removeClass("btn-success");
-				$("#RtG2").addClass("glyphicon-plus").removeClass("glyphicon-minus");
+				$("#RtG2").addClass("glyphicon-minus").removeClass("glyphicon-plus");
 			})
 
 			$("#GtR1").mouseout(function()
 			{
 				$("#GtR1").addClass("btn-success").removeClass("btn-danger");
-				$("#GtR2").addClass("glyphicon-minus").removeClass("glyphicon-plus");
+				$("#GtR2").addClass("glyphicon-plus").removeClass("glyphicon-minus");
 			})
 		</script>
 </div>
